@@ -1,0 +1,69 @@
+<style>
+    h3{font-family: "Microsoft YaHei";margin-bottom: 30px;padding-right:40px;}
+    h3 span{font-size: 14px;}
+    .form-group input{max-width: 400px;}
+    .form-group textarea{max-width: 400px;height:200px;}
+    .form-group label{width:100px;}
+    .form-group .control-label{float:left;}
+    .checkbox-inline input{position: relative;left:20px;}
+    .check-box .checkbox-inline{float: left;}
+    .has-error .control-label{position:relative;left:115px;}
+    @media(max-width: 768px){
+        .form-group label{text-align: right;}
+    }
+</style>
+
+<h3>
+    修改管理员
+    <div class="pull-right">
+        <span>操作：</span>
+        <a href="/admin/administrator/" class="btn btn-default">列表</a>
+    </div>
+</h3>
+<form method="POST" enctype="multipart/form-data" class="form-horizontal" action="/admin/Administrator/edit/">
+    <?php
+    if(isset($errorMessage)):
+    ?>
+        <div class="form-group has-error">
+            <label class="control-label">
+                <?php echo $errorMessage;?>
+            </label>
+        </div>
+    <?php
+    endif;
+    ?>
+    <div class="form-group">
+        <label class="control-label">管理员名称：</label>
+        <div class="col-xs-8">
+            <input class="form-control" value="<?php echo $this->model ? $this->model->getUsername() : '';?>" name="username" id="username" type="text"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">密码：</label>
+        <div class="col-xs-8">
+            <input class="form-control" value="" name="password" id="password" type="password"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">管理员组：</label>
+        <div class="col-xs-8">
+            <select name="group" id="group">
+                <?php foreach($this->groups as $key=>$groupName):?>
+                <option value="<?php echo $key;?>"><?php echo $groupName;?></option>
+                <?php  endforeach;?>
+
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">锁定：</label>
+        <div class="col-xs-8">
+            <input name="disabled" type="checkbox" id="disabled" value="1" <?php echo $this->model ? ($this->model->getDisabled()?'checked = checked':'') : '';?>  />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label"></label>
+        <input type="hidden" value="<?php echo $this->model ? $this->model->getId(): '';?>" name="id"/>
+        <input class="btn btn-info" value="提交" name="submit" id="submit" type="submit"/>
+    </div>
+</form>

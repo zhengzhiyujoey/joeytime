@@ -1,0 +1,20 @@
+@charset "UTF-8";
+@import "compass";
+
+.search-result{
+	font-size: 16px;
+	padding: 30px 0;
+	color: #666;
+	overflow: hidden;
+
+	.keyword{
+		font-weight: bold;
+		color: #d20c09;  
+	}
+}
+.recommend .sort li{
+	padding-bottom: 0;
+}
+.recommend a{
+	height: auto;
+}

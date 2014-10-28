@@ -1,0 +1,42 @@
+@charset "UTF-8";
+@import "compass";
+
+.search{
+  overflow: hidden;
+  width: 519px;
+  height: 40px;
+  background-color: #fff;
+  padding-left: 36px;
+  float: right;
+  margin-top: 27px;
+  background-position: 0 0;
+
+  .text{
+      float: left;
+      width: 420px;
+      height: 40px;
+      line-height: 40px\9;
+      font-size: 14px;
+      color: #999;
+      border: 0;
+      outline: 0;
+      margin-right: 10px;
+
+  }
+
+  .submit{
+        border: 0;
+        float: left;
+        width: 89px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        font-weight:bold;
+        background-color: #5cb85c;
+        cursor: pointer;
+  }
+
+
+}

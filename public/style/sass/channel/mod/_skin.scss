@@ -1,0 +1,133 @@
+@charset "UTF-8";
+@import "compass";
+
+/*皮肤样式;主要控制10个页面变化的导航、导航下面分类和内容的背景色*/
+
+.skin-green{
+	background-color: #e8f5ec;
+}
+
+.skin-green2,.skin-blue,.skin-blue2,.skin-yellow,.skin-yellow2,.skin-red,.skin-red2,.skin-cyan,.skin-purple{
+	.p-item .curr:hover{
+		color: #fff;
+	}
+}
+.skin-green2{
+	background-color: #f1f9ec;
+	.p-item .curr{
+		background-color: #67c03e;
+	}
+	.p-item a:hover{
+		color: #67c03e;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #67c03e;
+	}
+}
+
+.skin-blue{
+	background-color: #e8f5fe;
+	.p-item .curr{
+		background-color: #0185f1;
+	}
+	.p-item a:hover{
+		color: #0185f1;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #0185f1;
+	}
+}
+
+.skin-blue2{
+	background-color: #edf4fa;
+	.p-item .curr{
+		background-color: #69a3d5;
+	}
+	.p-item a:hover{
+		color: #69a3d5;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #69a3d5;
+	}
+}
+
+.skin-yellow{
+	background-color: #fdf5ea;
+	.p-item .curr{
+		background-color: #ec940e;
+	}
+	.p-item a:hover{
+		color: #ec940e;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #ec940e;
+	}
+}
+
+.skin-yellow2{
+	background-color: #fffaec;
+	.p-item .curr{
+		background-color: #ffbe00;
+	}
+	.p-item a:hover{
+		color: #ffbe00;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #ffbe00;
+	}
+}
+
+.skin-red{
+	background-color: #fbf0ee;
+	.p-item .curr{
+		background-color: #db5440;
+	}
+	.p-item a:hover{
+		color: #db5440;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #db5440;
+	}
+}
+
+.skin-red2{
+	background-color: #fef4f5;
+	.p-item .curr{
+		background-color: #f14e6d;
+	}
+	.p-item a:hover{
+		color: #f14e6d;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #f14e6d;
+	}
+}
+
+.skin-cyan{
+	background-color: #eaf6f4;
+	.p-item .curr{
+		background-color: #50b6a0;
+	}
+	.p-item a:hover{
+		color: #50b6a0;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #50b6a0;
+	}
+}
+
+.skin-purple{
+	background-color: #f2f2fa;
+	.p-item .curr{
+		background-color: #8e95cc;
+	}
+	.p-item a:hover{
+		color: #8e95cc;
+	}
+	.detail-class .curr a{
+		border-bottom-color: #8e95cc;
+	}
+}
+
+
+

@@ -1,0 +1,79 @@
+<style>
+    h3{font-family: "Microsoft YaHei";margin-bottom: 30px;padding-right:40px;}
+    h3 span{font-size: 14px;}
+    .tb-center{text-align: center;}
+    td .ellipsis{text-overflow:ellipsis;overflow:hidden;width:100%;white-space:nowrap;}
+    @media(max-width: 1280px){
+        #search .control-label{padding:7px 0 0 0;}
+    }
+</style>
+<h3>
+    <?php echo $this->title;?>
+    <div class="pull-right">
+        <span>操作：</span>
+        <a href="/admin/article/add/" class="btn btn-default">添加</a>
+    </div>
+</h3>
+<form id="search" method="GET" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label class="col-xs-1 control-label">文章名称：</label>
+        <div class="col-xs-2">
+            <input class="form-control" name="name" type="text" />
+        </div>
+        <div class="col-xs-2">
+            <input type="submit" value="查询" class="btn btn-default">
+        </div>
+    </div>
+</form>
+<table class="table table-striped" style="table-layout: fixed;">
+    <thead>
+    <th style="width:40px;">ID</th>
+    <th>文章标题</th>
+    <th>类型</th>
+    <th><a href="<?php echo $this->uri(array('admin_id'=>null),true);?>">管理员</a></th>
+    <th><a href="<?php echo $this->uri(array('order'=>'addtime','admin_id'=>$this->admin_id,'pos'=>$this->pos == 'up'?'down':'up'),true);?>">添加时间<i class="glyphicon glyphicon-arrow-<?php echo $this->pos == 'up'?'down':'up';?>"></i></a></th>
+    <th><a href="<?php echo $this->uri(array('order'=>'uptime','admin_id'=>$this->admin_id,'pos'=>$this->pos == 'up'?'down':'up'),true);?>">更新时间<i class="glyphicon glyphicon-arrow-<?php echo $this->pos == 'up'?'down':'up';?>"></i></a></th>
+    <th>操作</th>
+    </thead>
+    <?php foreach ($this->model as $article):?>
+    <tr>
+        <td>
+            <div class="ellipsis">
+                <?php echo $article->getId();?>
+            </div>
+        </td>
+        <td>
+            <div class="ellipsis">
+                <?php echo $article->getTitle();?>
+            </div>
+        </td>
+        <td>
+            <div class="ellipsis">
+                <?php foreach ($this->sort as $sorts):?>
+                <?php if($sorts->getId()==$article->getSort_ids()):?>
+                <?php echo $sorts->getName();?>
+                <?php endif;?>
+                <?php endforeach;?>
+
+            </div>
+        </td>
+        <td>
+            <div class="ellipsis">
+                <a href="/<?php echo $this->uri(array('admin_id'=>$article->getAuthor())); ?>"><?php echo $article->getAuthor();?></a>
+            </div>
+        </td>
+        <td>
+            <div class="ellipsis">
+                <?php echo date("Y-m-d",$article->getAddtime());?>
+            </div>
+        </td>
+        <td>
+            <div class="ellipsis">
+                <?php echo date("Y-m-d",$article->getUptime());?>
+            </div>
+        </td>
+        <td><a class="btn btn-info btn-xs" href="/admin/article/edit/id/<?php echo $article->getId();?>">修改</a></td>
+    </tr>
+    <?php endforeach;?>
+</table>
+<?php // $this->display('pagination.phtml');?>

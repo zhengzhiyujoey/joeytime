@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>joeytime</title>
+    <script type="text/javascript" src="/script/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/script/lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style/admin/bootstrap.css" />
+</head>
+<body>
+<style>
+    html, body{height:100%; overflow: hidden;background: #444;}
+    a{color:#EEE;}
+    .main{padding:50px 15px 40px 15px; height: 100%; overflow: hidden;}
+    .main .row{height:100%; overflow-y: auto;background: #FFF; -webkit-box-shadow: -5px 5px 10px #3c3c3c; -moz-box-shadow: -5px 5px 10px #3c3c3c;box-shadow: -5px 5px 10px #3c3c3c;}
+    .main .bs-sidebar{position: absolute;left: 0;width:280px; height: 100%;}
+    .nav .nav{text-indent: 30px;display: none;}
+    .bs-sidenav > li > a > span{position:relative;top:2px;margin-right:5px;}
+    .bs-sidenav > li > a {color:#EEE;text-shadow:1px 1px #777;}
+    .nav > li > a:hover, .nav > li > a:focus{background:#AAA;}
+    .main form{border-radius:4px;padding: 50px;width:400px;margin:50px auto;overflow-y: auto;background: #FFF;-webkit-box-shadow: 5px 8px 10px #222;-moz-box-shadow: 5px 8px 10px #222;box-shadow: 5px 8px 10px #222;}
+    .main form .form-group h1{font-family: "Microsoft YaHei";font-size: 30px;margin:0;text-shadow:2px 2px #EEE;}
+    .main form input{height:50px;width:300px;*line-height:50px;padding:0 15px;}
+    .main form .code input{width:150px;margin-right:15px;display: inline;}
+    table{table-layout:fixed;}
+    td div{text-overflow:ellipsis;overflow:hidden;width:100%;}
+    @media(max-width: 1024px){
+        .main .bs-sidenav > li{width:25%;float: left;text-align:center;position:relative;}
+        .nav .nav{position: absolute;background: #555;z-index: 99;width:100%;text-indent:0;}
+    }
+    @media(max-width: 768px){
+        .navbar-inverse{background: none; border-bottom: none;}
+        .navbar-inverse .navbar-header, .navbar-inverse .navbar-collapse{background-color: #222222;}
+    }
+</style>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">网站主页</a>
+    </div>
+
+    <div class="pull-right navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="/admin/login">未登陆</a></li>
+        </ul>
+    </div>
+</div>
+<div class="main">
+    <form action="/admin/login/" method="POST" name="login">
+        <div class="form-group">
+            <h1>用户登录</h1>
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="text" autocomplete="off" placeholder="用户名" tabindex="1" name="username" value="<?php echo $this->userName; ?>">
+        </div>
+        <div class="form-group">
+            <input class="form-control" type="password" autocomplete="off" placeholder="密码" tabindex="2" name="password">
+        </div>
+        <div class="form-group code">
+            <!--<input class="form-control" id="checkCode" type="text" autocomplete="off" name="captcha[code]" tabindex="3" placeholder="验证码" />-->
+            <!--<input type="hidden" name="captcha[key]" value="<?php // echo $this->captchaKey; ?>" tabindex="3" />-->
+            <!--<img class="checkImg" src="/captcha/show/key/<?php // echo $this->captchaKey; ?>" width="122" height="50" />-->
+            <?php // $this->captcha->show();?>
+        </div>
+
+
+        <p class="tip"><?php echo $this->errormessage; ?></p>
+        <p><input class="input-submit btn btn-primary" type="submit" value="登录"/></p>
+    </form>
+</div>
+<script>
+    var $img = $(".checkImg");
+    $img.css("cursor", "pointer");
+    $img.click(function(){
+        var $self = $(this);
+        var _src = $self.attr("src");
+        $self.attr("src", _src.replace(/\?(.*)?$/, '') + '?callback=' + (Math.random()*10000 & 0xFFFF))
+    });
+</script>
+
+</body>
+</html>

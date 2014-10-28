@@ -1,0 +1,23 @@
+@charset "UTF-8";
+@import "compass";
+
+//导入item模块;
+@import "../public/p-item";
+
+//导入首页样式;
+@import "./mod/index";
+
+//导入10种背景颜色和当前页面指示样式;
+@import "./mod/skin";
+
+//导入索引样式;
+@import "./mod/select-index";
+
+//导入推荐样式;
+@import "./mod/recommend"; 
+
+//导入字母排序样式;
+@import "./mod/classify";
+
+
+

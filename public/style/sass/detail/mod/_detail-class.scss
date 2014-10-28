@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@import "compass";
+
+.detail-class{
+	overflow: hidden;
+	height: 58px;
+	font-size: 14px;
+	margin-bottom: 30px;
+	font-weight: bold;
+	font-family: "宋体";
+
+	ul{
+		height: 55px;
+		_height:auto;
+		line-height: 55px;
+		border-bottom: 1px solid #cbcdc9;
+	}
+
+	a{	
+		display: block;
+		float: left;
+		padding: 0 38px;
+		color: #888;
+		_background: url(about:_blank);
+	}
+
+	.curr{
+		_position: relative;
+		height: 53px;
+		line-height: 55px;
+		overflow: hidden;
+		border-bottom: 4px solid #63ba3b;
+	}
+}
+.recommend .sort li{
+	padding-bottom: 0; 
+}
+.recommend a{
+	height: auto;
+} 

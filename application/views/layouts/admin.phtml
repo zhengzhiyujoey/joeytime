@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>joeytime</title>
+    <script type="text/javascript" src="/script/lib/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/script/lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style/admin/bootstrap.css" />
+</head>
+<body>
+<style>
+    html, body{height:100%; overflow: hidden;background: #444;font-family: "Microsoft YaHei";}
+    .main{padding:50px 15px 40px 300px; height: 100%; overflow: hidden;}
+    .nav > li > a{color:#EEE;}
+    .main .row{height:100%; overflow-y: auto;background: #FFF; -webkit-box-shadow: -5px 5px 10px #3c3c3c; -moz-box-shadow: -5px 5px 10px #3c3c3c;box-shadow: -5px 5px 10px #3c3c3c;}
+    .main .bs-sidebar{position: absolute;left: 0;width:280px; height: 100%;}
+    .nav .nav{text-indent: 30px;display: none;}
+    .bs-sidenav > li > a > span{position:relative;top:2px;margin-right:5px;}
+    .nav.bs-sidenav > li > a {color:#EEE;text-shadow:1px 1px #777;}
+    .main .nav > li > a{padding:10px 0 10px 40px;}
+    .nav > li > a:hover, .nav > li > a:focus,.nav > li> a.active{background:#AAA;}
+    table{table-layout:fixed;}
+    td div{text-overflow:ellipsis;overflow:hidden;width:100%;}
+    .nav > li > a.hover .caret{transform:rotate(180deg);-webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);}
+    @media(max-width: 1280px){
+        .main{padding:50px 15px 40px 200px;}
+        .main .bs-sidebar{width:180px;}
+    }
+    @media(max-width: 1024px){
+        .main{padding:50px 15px 40px 15px;}
+        .main .bs-sidebar{position:static;width:auto;height:auto;}
+        .main .bs-sidenav > li{width:25%;float: left;text-align:center;position:relative;}
+        .nav .nav{position: absolute;background: #555;z-index: 99;width:100%;text-indent:0;}
+    }
+    @media(max-width: 768px){
+        .main .nav > li > a{padding:10px 0;}
+        .navbar-inverse{background: none; border-bottom: none;}
+        .navbar-inverse .navbar-header, .navbar-inverse .navbar-collapse{background-color: #222222;}
+    }
+</style>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/admin/">joeytime导航</a>
+    </div>
+
+    <div class="pull-right navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li><a>欢迎您，<?php echo $this->admin->getUserName();?></a></li>
+            <!--li class="dropdown">
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+                    后台数据
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#" target="_blank">数据1</a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">数据2</a>
+                    </li>
+                </ul>
+            </li>-->
+            <li><a href="/admin/logout/">退出登录</a></li>
+        </ul>
+    </div>
+</div>
+<div class="main">
+    <div class="bs-sidebar">
+        <ul class="nav bs-sidenav">
+            <li>
+                <a class="nav-button" href="#overview">
+                    <span class="glyphicon glyphicon-list-alt"></span>
+                    栏目管理
+                    <b class="caret"></b>
+                </a>
+                <ul class="nav">
+                    <li><a href="/admin/sort/">分类列表</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="nav-button" href="#overview">
+                    <span class="glyphicon glyphicon-gift"></span>
+                    文章管理
+                    <b class="caret"></b>
+                </a>
+                <ul class="nav">
+                    <li><a href="/admin/sentence/">短语列表</a></li>
+                    <li><a href="/admin/article/">文章列表</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="nav-button" href="#overview">
+                    <span class="glyphicon glyphicon-tasks"></span>
+                    前台管理
+                    <b class="caret"></b>
+                </a>
+                <ul class="nav">
+                    <li><a href="/admin/outarticle/">日志列表页生成</a></li>
+                    <li><a href="/admin/outsentence/">短语列表页生成</a></li>
+                </ul>
+            </li>
+            <li>
+                <a class="nav-button" href="#overview">
+                    <span class="glyphicon glyphicon-user"></span>
+                    管理员管理
+                    <b class="caret"></b>
+                </a>
+                <ul class="nav">
+                    <li><a href="/admin/administrator/">管理员列表</a></li>
+                    <li><a href="/admin/admingroup/">管理授权</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <?php echo $this->yield; ?>
+        </div>
+    </div>
+</div>
+<iframe id="tempiframe" name="tempiframe" scrolling="No" frameborder="0" width="0" height="0"></iframe>
+<?php 
+    $dir = explode('/',$this->uri());
+?>
+<script>
+    //左侧导航
+    var $LeftBut = $(".nav-button");
+    var $LeftUl = [];
+    var _index = null;
+    $LeftBut.each(function(i){
+        var $this = $(this);
+        var $list = $this.next("ul");
+        $LeftUl.push($list);
+        $list.find("a").each(function(){
+            var $a = $(this);
+            if($a.attr('href').indexOf('<?php echo $dir[2];?>')>0){
+                _index = i;
+                $this.addClass("hover");
+                $list.slideDown(200);
+                $a.addClass("active");
+            }
+        });
+        $this.click(function(){
+            $this.toggleClass('hover');
+            $list.slideToggle();
+            if(_index!=i){
+                $LeftUl[_index].slideUp(200);
+                $LeftBut.eq(_index).removeClass("hover");
+            }
+            _index = i;
+        });
+    });
+</script>
+</body>
+</html>

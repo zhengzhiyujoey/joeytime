@@ -1,0 +1,28 @@
+<?php
+$request = $this->getRequest();
+$params = $request->getQuery();
+$page = $request->get('page',1);
+unset($params['page']);
+$queryStr = http_build_query($params);
+$uri = $request->getRequestUri();
+$listArray = $pager->getRangList();
+?>
+<div class="clearfix">
+
+    <?php if($pager->getPageCount() > 1): ?>
+    <ul class="pagination pull-right">
+        <li><a href="<?php echo $uri.'?'.$queryStr.'&page=1';?>">&laquo;</a></li>
+        <?php
+        foreach($listArray as $k => $v):
+        ?>
+            <li <?php if($v == $page) echo 'class="active"'; ?>>
+                <a href="<?php echo $uri.'?'.$queryStr.'&page='.$v;?>"><?php echo $v; ?></a>
+            </li>
+        <?php
+        endforeach;
+        ?>
+        <li><a href="<?php echo $uri.'?'.$queryStr.'&page='.$pager->getLast();?>">&raquo;</a></li>
+    </ul>
+    <?php endif;?>
+
+</div>

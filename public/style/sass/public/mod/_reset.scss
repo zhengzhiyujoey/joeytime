@@ -1,0 +1,76 @@
+@charset "UTF-8";
+@import "compass";
+
+body,h1,h2,h3,h4,h5,h6,hr,p,dl,dt,dd,ul,ol,li,form,fieldset,button,input,textarea,th,td{
+  padding:0;
+  margin:0;
+}
+   
+body{ 
+  background-color: #eee;
+}  
+
+input,select,img{ 
+  vertical-align:middle 
+}
+img{
+border: 0; 
+}
+input[type=submit]{border:none}
+
+body, button, input, select, textarea{
+       font-size: 12px;
+       font-family: "Microsoft YaHei","Arial","SimSun";
+}
+
+ul,ol{list-style:none}
+
+a{
+  text-decoration: none;
+  color:#333;
+}
+a:hover{
+  text-decoration: none;
+}
+
+cite, dfn, em, i {
+     font-style: normal;
+}
+
+.fr{ 
+  float:right;
+}
+.fl{ 
+  float:left
+}
+.clearfix:after{
+  content:"";
+  height:0;
+  visibility:hidden;
+  display:block;
+  clear:both;
+}
+.clearfix{  
+  zoom:1;
+}    
+.wraper{
+  width: 960px; 
+  margin: 0 auto;
+}
+.ico{  
+    background-image: image-url('ico.png');  
+    background-repeat: no-repeat;
+}
+.content{
+  margin: 0 auto;
+  padding: 0 29px;
+  width: 900px;
+  border: 1px solid #dedede;
+  border-top: none;
+}    
+
+body{
+  min-width: 960px;
+}
+
+

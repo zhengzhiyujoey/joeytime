@@ -1,0 +1,46 @@
+<?php
+
+$isRedirect = isset($this->isRedirect) ? $this->isRedirect : true;
+$url = isset($url) ? $url : $this->uri(array('action' => 'index'));
+if (isset($this->messages['message'])) {//提示信息
+    $messageString = '';
+    if (count($this->messages['message']) == 1) {
+        foreach ($this->messages['message'] as $message) {
+            $messageString .= $message;
+        }
+    } else {
+        $i = 1;
+        foreach ($this->messages['message'] as $message) {
+            $messageString .= $i . '. ' . $message . '\r\n';
+            $i++;
+        }
+    }
+
+    if ($messageString) {
+        echo '<script>alert("' . $messageString . '");</script>';
+    }
+    if ($isRedirect) {
+        echo '<script>parent.window.location.href="' . $url . '";</script>';
+    }
+} elseif (isset($this->messages['error'])) {//错误信息
+    $messageString = '';
+    if (count($this->messages['error']) == 1) {
+        foreach ($this->messages['error'] as $message) {
+            $messageString .= $message;
+        }
+    } else {
+        $i = 1;
+        foreach ($this->messages['error'] as $message) {
+            $messageString .= $i . '. ' . $message . '\r\n';
+            $i++;
+        }
+    }
+
+    if ($messageString) {
+        $url = $this->uri(array('action' => 'index'));
+        echo '<script>alert("' . $messageString . '");</script>';
+    }
+}
+
+
+

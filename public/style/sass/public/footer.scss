@@ -1,0 +1,53 @@
+@charset "UTF-8";
+@import "compass";
+
+.footer{
+	margin-top: 50px;
+
+	.links{
+		overflow: hidden;
+		color: #666;
+		line-height: 28px;
+		padding: 15px 0;
+
+		dt,dd{
+			float: left;
+		}
+		dt{
+			width: 66px;
+		}
+		dd{
+			width: 890px;
+		}
+		a{
+			color: #666;
+			padding-right: 12px;
+		}
+		a:hover{
+			color: #333;
+		}
+	}
+
+	.copy{
+		clear: both;
+		height: 65px;
+		line-height: 65px;
+		text-align: center;
+		font-size: 14px;
+		color: #fff;
+		background-color: #595959;
+
+		a{
+			color: #fff;
+		}
+	}
+}
+
+.haslinks{
+	margin-top: 0;
+}
+.hide{
+	display: none;
+}
+
+

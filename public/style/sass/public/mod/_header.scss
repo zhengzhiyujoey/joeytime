@@ -1,0 +1,42 @@
+@charset "UTF-8";
+@import "compass";
+
+//导入搜索样式;
+@import "./search"; 
+.header{
+      height: 87px;
+      background-color: #4e9486;
+      border-bottom: 1px solid #fff;
+
+      .logo{
+          width: 268px;
+          height: 87px;
+          float: left;
+          cursor: pointer;
+
+          span{
+              position: relative;
+              z-index: -1;
+          }
+      }
+
+      .search{
+        float: right;
+        margin-top: 27px;
+        background-position: 0 0;
+      }
+}
+.share{
+        height: 51px;
+        clear: both;
+
+        .ico{ 
+            width: 145px;
+            height: 26px;
+            background-position: 0 -46px;
+            float: right;
+            margin-top: 14px;
+            padding-left: 12px;
+        }
+}     
+

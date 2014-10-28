@@ -1,0 +1,34 @@
+<style>
+    h3{font-family: "Microsoft YaHei";margin-bottom: 30px;padding-right:40px;}
+    h3 span{font-size: 14px;}
+    .tb-center{text-align: center;}
+    @media(max-width: 1280px){
+        #search .control-label{padding:7px 0 0 0;}
+    }
+</style>
+<h3>
+    <?php echo $this->title;?>
+    <div class="pull-right">
+        <span>操作：</span>
+        <a href="/admin/administrator/add" class="btn btn-default">添加</a>
+    </div>
+</h3>
+<table class="table table-striped" style="table-layout: fixed;">
+    <thead>
+    <th style="width:40px;">ID</th>
+    <th>管理员</th>
+    <th>管理员组</th>
+    <th>锁定</th>
+    <th>操作</th>
+    </thead>
+<?php foreach ($this->administrators as $administrator):?>
+    <tr>
+        <td><?php echo $administrator->getId();?></td>
+        <td><?php echo $administrator->getUsername();?></td>
+        <td><?php // echo $groups[$administrator->getGroups()];?></td>
+        <td><i class="glyphicon glyphicon-<?php echo $administrator->getDisabled()?'lock':'ok';?>"></i></td>
+        <td><a class="btn btn-info btn-xs" href="/admin/administrator/edit/id/<?php echo $administrator->getId();?>">编辑</a></td>
+
+    </tr>
+<?php endforeach; ?>
+</table>

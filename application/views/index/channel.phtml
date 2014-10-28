@@ -1,0 +1,48 @@
+<?php
+$this->display("public/header.phtml", array(
+    'addStyle' => array('channel/index.css'),
+));
+?>
+<link href="/style/dist/channel/index.css" type="text/css" rel="stylesheet">
+<div class="wraper">
+    <?php //调用导航?>
+    <?php
+        $this->display("public/p-item.phtml");
+    ?>
+    <div class="content">
+        <?php //索引选择跳转 ?>
+        <div class="select-index">
+            <strong class="titles"><?php echo $this->sort;?></strong>
+            <dl class="jump">
+                <dt>索引： </dt>
+                <dd><?php $letter = array('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); ?><?php foreach ($letter as $val): ?><?php if (isset($this->groups[$val])): ?><a href="#<?php echo $val ?>"><?php echo $val ?></a><?php endif; ?><?php endforeach; ?></dd>
+            </dl>
+        </div>
+<!--        <div class="recommend">
+            <p class="titles">推荐</p>
+            <ul class="sort">
+                <?php // foreach ($this->commends as $game): ?><li><a href="/<?php // echo $this->sort; ?>/<?php // echo $game->id; ?>.htm" target="_blank"><img src="<?php // echo $resourceUrl . $game->getIcon(); ?>" alt="<?php // echo $game->name; ?>" width="200" height="60"></a></li><?php // endforeach;?>
+			</ul>
+        </div>-->
+        <?php //按字母排序分类 ?>
+        <?php foreach ($letter as $val): ?>
+            <?php if (isset($this->groups[$val])): ?>
+                <div class="classify">
+                    <p class="titles" id="<?php echo $val ?>"><?php echo $val ?></p>
+                    <ul class="sort"><?php foreach ($this->groups[$val] as $articles): ?>
+                        <li><a href="/<?php echo $this->sort."/".$articles['id']; ?>.htm" ><?php echo $articles['title']; ?></a>
+                        </li><?php endforeach; ?>
+                    </ul>
+        </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php //调用页脚 ?>
+<?php
+
+$links = array(
+    'addScript' => array('lib/jquery.js','base/base.js')
+);
+$this->display('public/footer.phtml', $links);
+?>

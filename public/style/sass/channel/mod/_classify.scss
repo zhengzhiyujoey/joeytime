@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@import "compass";
+
+.classify{
+	overflow: hidden;
+	margin-bottom: 20px;
+	width: 100%;
+	clear: both;
+
+	.titles{
+		height: 32px;
+		line-height: 32px;
+		font-size: 16px;
+		color: #428bca;
+		border-bottom: 1px solid #d7d6d6;	
+	}
+	.sort{
+		font-size: 14px;
+		overflow: hidden;
+
+		li{
+			width: 148px;
+			height: 40px;
+			line-height: 40px;
+			cursor: pointer;
+			float: left;
+		}
+		a{	
+			display: block;
+			color: #333;
+			_background: url(about:_blank);
+		}
+		a:hover{
+			color: #428bca;
+		}
+	}
+}
+
+
+

@@ -1,0 +1,49 @@
+<?php
+$keyword='';
+if ($this->sort == 'life') {
+    $title = '专区 手机游戏' .  '专区大全' . ' 手机迷';
+    $class = 'skin-green';
+    $keyword='专区';
+} else if ($this->sort == 'work') {
+    $title =  '礼包大全 ' . '礼包领取 手机迷';
+    $class = 'skin-blue';
+    $keyword='礼包';
+} else if ($this->sort == 'photo') {
+    $title =  '激活码大全 ' . '激活码领取 手机迷';
+    $class = 'skin-yellow';
+    $keyword='激活码';
+}else if($this->sort == 'sentence'){
+    $title = '游戏大全 '.  '微信游戏 手机迷';
+    $class = 'skin-red';
+    $keyword='' ;
+}else{
+    $title = '大全 手机迷';
+    $class = 'skin-red';
+    $keyword='' ;
+}
+
+$this->display("public/header.phtml", array(
+    'addStyle' => array('detail/index.css'),
+));
+?>
+<link href="/style/dist/detail/index.css" type="text/css" rel="stylesheet">
+<?php //通过skin-* 来设置不同的背景色和导航颜色 ?>
+<div class="wraper <?php echo $class; ?>">
+    <?php //调用导航?>
+    <?php
+        $this->display("public/p-item.phtml");
+    ?>
+
+    <div class="content">
+        <div class="detail-class">
+              <?php echo $this->content->title;?><br/>
+              <?php echo $this->content->body;?>
+        </div>
+    </div>
+</div>
+
+<?php
+$this->display('public/footer.phtml', array(
+    'addScript' => array('lib/jquery.js', 'base/base.js'),
+));
+?>
