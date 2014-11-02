@@ -78,6 +78,7 @@ class ArticleController extends \Base\AdminController{
         if($id){
             $articleModel->setId($id);
             $articleModel->setUptime(time());
+            //?????????
             $articleMapper->update($articleModel);
         }else{
             $articleModel->setAddtime(time());
